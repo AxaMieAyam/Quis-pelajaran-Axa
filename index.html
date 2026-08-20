@@ -16,13 +16,13 @@
 }
 
 body {
-    min-height: 100vh;
+   min-height: 100vh;
 
     background:
         linear-gradient(
             135deg,
-            #4f46e5,
-            #7c3aed
+            rgb(254, 254, 254),
+            #ffffff
         );
 
     display: flex;
@@ -37,7 +37,7 @@ body {
     width: 100%;
     max-width: 760px;
 
-    background: white;
+    background: rgb(252, 252, 252);
 
     border-radius: 22px;
 
@@ -60,6 +60,28 @@ body {
     animation:
         muncul 0.8s ease;
 
+}
+
+/* GAMBAR OPENING */
+
+.opening-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 350px;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    margin: 0 auto 20px auto;
+
+    display: block;
+
+    background: #f1f5f9;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15);
 }
 
 .welcome-icon {
@@ -366,6 +388,28 @@ select {
 
 }
 
+/* GAMBAR HASIL */
+
+.result-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 350px;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    margin: 0 auto 20px auto;
+
+    display: block;
+
+    background: #f1f5f9;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15);
+}
+
 .result-screen h1 {
 
     color: #4f46e5;
@@ -440,6 +484,27 @@ footer {
 
     }
 
+    @media(max-width:500px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    .question {
+        font-size: 18px;
+    }
+
+    .welcome-screen h1 {
+        font-size: 26px;
+    }
+
+    .opening-image,
+    .result-image {
+        max-height: 250px;
+    }
+
+}
+
 }
 
 </style>
@@ -461,6 +526,13 @@ footer {
     id="welcomeScreen"
 >
 
+    <!-- GAMBAR OPENING -->
+    <img
+        src="alamak.jpg"
+        alt="Gambar Opening"
+        class="opening-image"
+    >
+
     <div class="welcome-icon">
         🎓
     </div>
@@ -470,17 +542,17 @@ footer {
     </h1>
 
     <h2>
-        Selamat Datang di Kuis Pelajaran!
+        Selamat Datang di Kuis Sekolah!
     </h2>
 
     <p>
 
-        Halo! Selamat datang di
+        Halooo! Selamat datang di
         aplikasi kuis pelajaran sekolah.
 
         <br>
 
-        Yok, uji pengetahuanmu
+        yok, uji pengetahuanmu
         dan lihat seberapa tinggi nilaimu! 📚✨
 
         <br><br>
@@ -644,6 +716,13 @@ footer {
     class="result-screen"
     id="resultScreen"
 >
+
+    <!-- GAMBAR SETELAH SELESAI -->
+    <img
+        src="mbut.jpg"
+        alt="Kuis Selesai"
+        class="result-image"
+    >
 
     <h1>
         🎉 Kuis Selesai!
@@ -2051,40 +2130,40 @@ function getMessage(score) {
 
     if(score === 100) {
 
-        return "🏆 SEMPURNA! Kamu luar biasa!";
+        return "🏆 ChatGpt ini pasti";
 
     }
 
 
     if(score >= 90) {
 
-        return "🔥 Sangat bagus! Pertahankan!";
+        return "🔥 Kelas kink";
 
     }
 
 
     if(score >= 80) {
 
-        return "👏 wopp pintar pa ";
+        return "👏 Gokil";
 
     }
 
 
     if(score >= 70) {
 
-        return "👍 Mayan lah ";
+        return "👍 mayanlah lolos";
 
     }
 
 
     if(score >= 60) {
 
-        return "💪 Masih remedial ini adohhh ";
+        return "💪 aih masih remedial";
 
     }
 
 
-    return "📚 Lebih pintar adeku daripada kau pa";
+    return "📚 Lebih pintar kucingku pa ededeh";
 
 }
 
