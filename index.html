@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuis Pelajaran Sekolah - AXA</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container {
+
+    width: 100%;
+    max-width: 760px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.25);
+
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome-screen {
+
+    text-align: center;
+
+    animation:
+        muncul 0.8s ease;
+
+}
+
+.welcome-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 15px;
+
+}
+
+.welcome-screen h1 {
+
+    color: #4f46e5;
+
+    margin-bottom: 10px;
+
+    font-size: 32px;
+
+}
+
+.welcome-screen h2 {
+
+    color: #333;
+
+    margin-bottom: 15px;
+
+}
+
+.welcome-screen p {
+
+    color: #666;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+
+}
+
+
+@keyframes muncul {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+
+    border: none;
+
+    background: #4f46e5;
+
+    color: white;
+
+    padding: 13px 25px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+
+}
+
+button:hover {
+
+    background: #3730a3;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+.start-screen {
+
+    display: none;
+
+    text-align: center;
+
+}
+
+.start-screen h1 {
+
+    color: #4f46e5;
+
+    margin-bottom: 10px;
+
+}
+
+.subtitle {
+
+    color: #666;
+
+    margin-bottom: 25px;
+
+}
+
+select {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border:
+        2px solid #ddd;
+
+    border-radius: 10px;
+
+    margin: 15px 0;
+
+    font-size: 16px;
+
+    background: white;
+
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-screen {
+
+    display: none;
+
+}
+
+.top-bar {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+.question-number {
+
+    font-weight: bold;
+
+    color: #4f46e5;
+
+}
+
+.timer {
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+
+}
+
+.progress {
+
+    width: 100%;
+
+    height: 8px;
+
+    background: #eee;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+
+}
+
+.progress-bar {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #4f46e5;
+
+    transition: 0.3s;
+
+}
+
+.question {
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+    line-height: 1.5;
+
+}
+
+.answers {
+
+    display: grid;
+
+    gap: 12px;
+
+}
+
+.answer {
+
+    width: 100%;
+
+    text-align: left;
+
+    background: #f8fafc;
+
+    color: #222;
+
+    border:
+        2px solid #e2e8f0;
+
+}
+
+.answer:hover {
+
+    background: #eef2ff;
+
+    border-color:
+        #4f46e5;
+
+    color: #222;
+
+}
+
+.answer.correct {
+
+    background: #dcfce7;
+
+    border-color: #16a34a;
+
+    color: #166534;
+
+}
+
+.answer.wrong {
+
+    background: #fee2e2;
+
+    border-color: #dc2626;
+
+    color: #991b1b;
+
+}
+
+.next-btn {
+
+    margin-top: 25px;
+
+    width: 100%;
+
+    display: none;
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result-screen {
+
+    display: none;
+
+    text-align: center;
+
+}
+
+.result-screen h1 {
+
+    color: #4f46e5;
+
+}
+
+.score {
+
+    font-size: 65px;
+
+    font-weight: bold;
+
+    color: #4f46e5;
+
+    margin: 20px 0;
+
+}
+
+.result-info {
+
+    color: #555;
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #777;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px) {
+
+    .container {
+
+        padding: 20px;
+
+    }
+
+    .question {
+
+        font-size: 18px;
+
+    }
+
+    .welcome-screen h1 {
+
+        font-size: 26px;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- =========================
+     WELCOME
+========================= -->
+
+<div
+    class="welcome-screen"
+    id="welcomeScreen"
+>
+
+    <div class="welcome-icon">
+        🎓
+    </div>
+
+    <h1>
+        Assalamu'alaikum 👋
+    </h1>
+
+    <h2>
+        Selamat Datang di Kuis Sekolah!
+    </h2>
+
+    <p>
+
+        Halo! Selamat datang di
+        aplikasi kuis pelajaran sekolah.
+
+        <br>
+
+        Yuk, uji pengetahuanmu
+        dan lihat seberapa tinggi nilaimu! 📚✨
+
+        <br><br>
+
+        <b>
+            Semangat mengerjakan
+            dan semoga mendapatkan
+            nilai terbaik! 💪
+        </b>
+
+    </p>
+
+    <button
+        onclick="showStart()"
+    >
+
+        Mulai 🚀
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     PILIH MAPEL
+========================= -->
+
+<div
+    class="start-screen"
+    id="startScreen"
+>
+
+    <h1>
+        📚 Pilih Pelajaran
+    </h1>
+
+    <p class="subtitle">
+
+        Pilih mata pelajaran
+        yang ingin kamu kerjakan.
+
+    </p>
+
+
+    <select id="subject">
+
+        <option value="matematika">
+            📐 Matematika
+        </option>
+
+        <option value="ipa">
+            🔬 IPA
+        </option>
+
+        <option value="ips">
+            🌎 IPS
+        </option>
+
+        <option value="bahasa">
+            📖 Bahasa Indonesia
+        </option>
+
+        <option value="inggris">
+            🇬🇧 Bahasa Inggris
+        </option>
+
+    </select>
+
+
+    <button
+        onclick="startQuiz()"
+    >
+
+        Mulai Kuis 🚀
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<div
+    class="quiz-screen"
+    id="quizScreen"
+>
+
+    <div class="top-bar">
+
+        <div
+            class="question-number"
+            id="questionNumber"
+        >
+
+            Soal 1/20
+
+        </div>
+
+
+        <div
+            class="timer"
+            id="timer"
+        >
+
+            ⏱️ 30
+
+        </div>
+
+    </div>
+
+
+    <div class="progress">
+
+        <div
+            class="progress-bar"
+            id="progressBar"
+        ></div>
+
+    </div>
+
+
+    <div
+        class="question"
+        id="question"
+    >
+
+        Pertanyaan
+
+    </div>
+
+
+    <div
+        class="answers"
+        id="answers"
+    ></div>
+
+
+    <button
+        class="next-btn"
+        id="nextBtn"
+        onclick="nextQuestion()"
+    >
+
+        Soal Berikutnya →
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+    class="result-screen"
+    id="resultScreen"
+>
+
+    <h1>
+        🎉 Kuis Selesai!
+    </h1>
+
+
+    <p>
+        Nilai kamu:
+    </p>
+
+
+    <div
+        class="score"
+        id="score"
+    >
+
+        100
+
+    </div>
+
+
+    <div
+        class="result-info"
+        id="resultInfo"
+    ></div>
+
+
+    <button
+        onclick="restartQuiz()"
+    >
+
+        🔄 Main Lagi
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    MADE IN AXA HEDRAT ATALA
+
+</footer>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================
+   BANK SOAL
+===================================== */
+
+const questions = {
+
+
+/* =====================================
+   MATEMATIKA
+===================================== */
+
+matematika: [
+
+{
+question:"Berapakah hasil dari 12 × 5?",
+answers:["50","60","70","80"],
+correct:1
+},
+
+{
+question:"Berapakah hasil dari 144 ÷ 12?",
+answers:["10","11","12","14"],
+correct:2
+},
+
+{
+question:"Jika x + 5 = 12, maka nilai x adalah...",
+answers:["5","6","7","8"],
+correct:2
+},
+
+{
+question:"Berapakah luas persegi dengan sisi 8 cm?",
+answers:["16 cm²","32 cm²","64 cm²","72 cm²"],
+correct:2
+},
+
+{
+question:"Hasil dari 25 + 35 adalah...",
+answers:["50","55","60","65"],
+correct:2
+},
+
+{
+question:"Berapakah hasil dari 15 × 4?",
+answers:["50","55","60","65"],
+correct:2
+},
+
+{
+question:"Hasil dari 100 - 37 adalah...",
+answers:["53","63","73","83"],
+correct:1
+},
+
+{
+question:"Berapakah 9²?",
+answers:["18","27","72","81"],
+correct:3
+},
+
+{
+question:"Jika 3x = 21, maka x = ...",
+answers:["5","6","7","8"],
+correct:2
+},
+
+{
+question:"Keliling persegi dengan sisi 6 cm adalah...",
+answers:["12 cm","18 cm","24 cm","36 cm"],
+correct:2
+},
+
+{
+question:"Berapakah hasil dari 7 × 8?",
+answers:["48","54","56","64"],
+correct:2
+},
+
+{
+question:"Hasil dari 225 ÷ 15 adalah...",
+answers:["10","12","15","20"],
+correct:2
+},
+
+{
+question:"Bentuk desimal dari 1/2 adalah...",
+answers:["0,2","0,5","1,2","2,5"],
+correct:1
+},
+
+{
+question:"Berapakah 20% dari 100?",
+answers:["10","20","30","40"],
+correct:1
+},
+
+{
+question:"Jika panjang 10 cm dan lebar 5 cm, luasnya...",
+answers:["15 cm²","30 cm²","50 cm²","100 cm²"],
+correct:2
+},
+
+{
+question:"Hasil dari 3 + 4 × 2 adalah...",
+answers:["10","11","14","16"],
+correct:1
+},
+
+{
+question:"Akar kuadrat dari 64 adalah...",
+answers:["6","7","8","9"],
+correct:2
+},
+
+{
+question:"Berapakah hasil dari 2³?",
+answers:["4","6","8","12"],
+correct:2
+},
+
+{
+question:"Jika x - 8 = 10, nilai x adalah...",
+answers:["16","17","18","19"],
+correct:2
+},
+
+{
+question:"Berapakah jumlah sudut dalam sebuah segitiga?",
+answers:["90°","180°","270°","360°"],
+correct:1
+}
+
+],
+
+
+/* =====================================
+   IPA
+===================================== */
+
+ipa: [
+
+{
+question:"Organ yang berfungsi memompa darah adalah...",
+answers:["Paru-paru","Jantung","Ginjal","Lambung"],
+correct:1
+},
+
+{
+question:"Proses tumbuhan membuat makanan sendiri disebut...",
+answers:["Respirasi","Fotosintesis","Transpirasi","Ekskresi"],
+correct:1
+},
+
+{
+question:"Planet yang dikenal sebagai Planet Merah adalah...",
+answers:["Venus","Mars","Jupiter","Saturnus"],
+correct:1
+},
+
+{
+question:"Satuan SI untuk panjang adalah...",
+answers:["Kilogram","Meter","Liter","Sekon"],
+correct:1
+},
+
+{
+question:"Gas yang dibutuhkan manusia untuk bernapas adalah...",
+answers:["Karbon dioksida","Oksigen","Nitrogen","Hidrogen"],
+correct:1
+},
+
+{
+question:"Organ utama sistem pernapasan manusia adalah...",
+answers:["Jantung","Paru-paru","Ginjal","Hati"],
+correct:1
+},
+
+{
+question:"Bagian tumbuhan yang menyerap air adalah...",
+answers:["Daun","Batang","Akar","Bunga"],
+correct:2
+},
+
+{
+question:"Hewan yang memakan tumbuhan disebut...",
+answers:["Karnivora","Herbivora","Omnivora","Insektivora"],
+correct:1
+},
+
+{
+question:"Air membeku pada suhu...",
+answers:["0°C","10°C","50°C","100°C"],
+correct:0
+},
+
+{
+question:"Pusat tata surya adalah...",
+answers:["Bumi","Bulan","Matahari","Mars"],
+correct:2
+},
+
+{
+question:"Gaya yang menyebabkan benda jatuh ke bawah disebut...",
+answers:["Gaya otot","Gaya magnet","Gaya gravitasi","Gaya gesek"],
+correct:2
+},
+
+{
+question:"Alat untuk mengukur suhu disebut...",
+answers:["Barometer","Termometer","Higrometer","Speedometer"],
+correct:1
+},
+
+{
+question:"Sumber energi utama bagi bumi adalah...",
+answers:["Bulan","Matahari","Angin","Air"],
+correct:1
+},
+
+{
+question:"Perubahan air menjadi uap disebut...",
+answers:["Membeku","Menguap","Mengembun","Mencair"],
+correct:1
+},
+
+{
+question:"Tulang berfungsi untuk...",
+answers:[
+"Memompa darah",
+"Menopang tubuh",
+"Mencerna makanan",
+"Menghasilkan udara"
+],
+correct:1
+},
+
+{
+question:"Vitamin yang banyak terdapat pada wortel adalah...",
+answers:["Vitamin A","Vitamin B","Vitamin C","Vitamin D"],
+correct:0
+},
+
+{
+question:"Organ yang menyaring darah adalah...",
+answers:["Ginjal","Jantung","Paru-paru","Lambung"],
+correct:0
+},
+
+{
+question:"Benda yang dapat ditarik magnet adalah...",
+answers:["Kayu","Plastik","Besi","Kertas"],
+correct:2
+},
+
+{
+question:"Salah satu sumber energi terbarukan adalah...",
+answers:["Batu bara","Minyak bumi","Matahari","Gas alam"],
+correct:2
+},
+
+{
+question:"Manusia bernapas menggunakan...",
+answers:["Insang","Paru-paru","Kulit","Sirip"],
+correct:1
+}
+
+],
+
+
+/* =====================================
+   IPS
+===================================== */
+
+ips: [
+
+{
+question:"Indonesia terletak di antara dua benua, yaitu...",
+answers:[
+"Asia dan Australia",
+"Asia dan Eropa",
+"Afrika dan Australia",
+"Amerika dan Asia"
+],
+correct:0
+},
+
+{
+question:"Ibu kota Indonesia saat ini adalah...",
+answers:[
+"Bandung",
+"Surabaya",
+"Jakarta",
+"Medan"
+],
+correct:2
+},
+
+{
+question:"VOC didirikan pada tahun...",
+answers:["1596","1602","1700","1808"],
+correct:1
+},
+
+{
+question:"Semboyan bangsa Indonesia adalah...",
+answers:[
+"Tut Wuri Handayani",
+"Bhinneka Tunggal Ika",
+"Ing Ngarsa Sung Tuladha",
+"Merdeka atau Mati"
+],
+correct:1
+},
+
+{
+question:"Proklamasi Kemerdekaan Indonesia dibacakan pada...",
+answers:[
+"17 Agustus 1945",
+"20 Mei 1908",
+"28 Oktober 1928",
+"10 November 1945"
+],
+correct:0
+},
+
+{
+question:"Tokoh yang membacakan Proklamasi adalah...",
+answers:[
+"Soekarno",
+"Ki Hajar Dewantara",
+"Jenderal Sudirman",
+"Cut Nyak Dien"
+],
+correct:0
+},
+
+{
+question:"Bhinneka Tunggal Ika berarti...",
+answers:[
+"Bersatu kita teguh",
+"Berbeda-beda tetapi tetap satu",
+"Merdeka selamanya",
+"Indonesia Raya"
+],
+correct:1
+},
+
+{
+question:"Hari Kebangkitan Nasional diperingati setiap...",
+answers:[
+"20 Mei",
+"17 Agustus",
+"28 Oktober",
+"10 November"
+],
+correct:0
+},
+
+{
+question:"Budi Utomo berdiri pada tahun...",
+answers:["1905","1908","1912","1928"],
+correct:1
+},
+
+{
+question:"Sumpah Pemuda terjadi pada...",
+answers:[
+"20 Mei 1908",
+"17 Agustus 1945",
+"28 Oktober 1928",
+"10 November 1945"
+],
+correct:2
+},
+
+{
+question:"Indonesia berada di kawasan...",
+answers:[
+"Asia Tenggara",
+"Asia Barat",
+"Eropa",
+"Afrika"
+],
+correct:0
+},
+
+{
+question:"Mata pencaharian masyarakat pesisir biasanya...",
+answers:[
+"Nelayan",
+"Petani teh",
+"Penambang",
+"Peternak sapi"
+],
+correct:0
+},
+
+{
+question:"Gunung tertinggi di Indonesia adalah...",
+answers:[
+"Semeru",
+"Kerinci",
+"Rinjani",
+"Puncak Jaya"
+],
+correct:3
+},
+
+{
+question:"Pulau terluas di Indonesia adalah...",
+answers:[
+"Jawa",
+"Kalimantan",
+"Bali",
+"Madura"
+],
+correct:1
+},
+
+{
+question:"Laut antara Pulau Jawa dan Kalimantan adalah...",
+answers:[
+"Laut Jawa",
+"Laut Banda",
+"Laut Arafura",
+"Laut Flores"
+],
+correct:0
+},
+
+{
+question:"Pancasila memiliki jumlah sila sebanyak...",
+answers:["3","4","5","6"],
+correct:2
+},
+
+{
+question:"Membeli barang dari luar negeri disebut...",
+answers:[
+"Ekspor",
+"Impor",
+"Produksi",
+"Distribusi"
+],
+correct:1
+},
+
+{
+question:"Menjual barang ke luar negeri disebut...",
+answers:[
+"Ekspor",
+"Impor",
+"Konsumsi",
+"Produksi"
+],
+correct:0
+},
+
+{
+question:"Contoh kegiatan produksi adalah...",
+answers:[
+"Membeli makanan",
+"Menggunakan sepatu",
+"Membuat meja",
+"Menonton televisi"
+],
+correct:2
+},
+
+{
+question:"Semboyan nasional Indonesia adalah...",
+answers:[
+"Garuda Pancasila",
+"Bhinneka Tunggal Ika",
+"Indonesia Jaya",
+"Satu Nusa"
+],
+correct:1
+}
+
+],
+
+
+/* =====================================
+   BAHASA INDONESIA
+===================================== */
+
+bahasa: [
+
+{
+question:"Antonim dari kata 'besar' adalah...",
+answers:["Luas","Kecil","Tinggi","Panjang"],
+correct:1
+},
+
+{
+question:"Sinonim dari kata 'indah' adalah...",
+answers:["Buruk","Cantik","Kotor","Lambat"],
+correct:1
+},
+
+{
+question:"Kalimat untuk menanyakan sesuatu disebut...",
+answers:[
+"Kalimat berita",
+"Kalimat perintah",
+"Kalimat tanya",
+"Kalimat seru"
+],
+correct:2
+},
+
+{
+question:"Cerita yang berasal dari khayalan disebut...",
+answers:[
+"Fiksi",
+"Biografi",
+"Berita",
+"Laporan"
+],
+correct:0
+},
+
+{
+question:"Kata baku dari 'ijin' adalah...",
+answers:["Ijin","Izyn","Izin","Izhin"],
+correct:2
+},
+
+{
+question:"Lawan kata 'panjang' adalah...",
+answers:["Lebar","Pendek","Besar","Tinggi"],
+correct:1
+},
+
+{
+question:"Sinonim dari 'cerdas' adalah...",
+answers:["Bodoh","Pandai","Lemah","Malas"],
+correct:1
+},
+
+{
+question:"Kalimat yang berisi perintah disebut...",
+answers:[
+"Kalimat tanya",
+"Kalimat perintah",
+"Kalimat berita",
+"Kalimat pasif"
+],
+correct:1
+},
+
+{
+question:"Teks yang berisi langkah-langkah disebut...",
+answers:[
+"Narasi",
+"Prosedur",
+"Deskripsi",
+"Puisi"
+],
+correct:1
+},
+
+{
+question:"Tokoh utama dalam sebuah cerita disebut...",
+answers:[
+"Tokoh tambahan",
+"Protagonis",
+"Latar",
+"Alur"
+],
+correct:1
+},
+
+{
+question:"Tempat terjadinya cerita disebut...",
+answers:[
+"Alur",
+"Tema",
+"Latar",
+"Amanat"
+],
+correct:2
+},
+
+{
+question:"Pesan yang ingin disampaikan penulis disebut...",
+answers:[
+"Amanat",
+"Tokoh",
+"Latar",
+"Judul"
+],
+correct:0
+},
+
+{
+question:"Puisi terdiri atas beberapa...",
+answers:[
+"Paragraf",
+"Bait",
+"Bab",
+"Dialog"
+],
+correct:1
+},
+
+{
+question:"Orang yang menulis cerita disebut...",
+answers:[
+"Pembaca",
+"Penulis",
+"Tokoh",
+"Editor"
+],
+correct:1
+},
+
+{
+question:"Kata 'makan' merupakan contoh...",
+answers:[
+"Kata kerja",
+"Kata benda",
+"Kata sifat",
+"Kata bilangan"
+],
+correct:0
+},
+
+{
+question:"Kata 'cantik' merupakan contoh...",
+answers:[
+"Kata kerja",
+"Kata sifat",
+"Kata benda",
+"Kata sambung"
+],
+correct:1
+},
+
+{
+question:"Tanda baca pada akhir kalimat tanya adalah...",
+answers:[".","!",",","?"],
+correct:3
+},
+
+{
+question:"Tanda baca untuk mengakhiri kalimat berita adalah...",
+answers:[".","?","!",":"],
+correct:0
+},
+
+{
+question:"Teks yang menggambarkan objek secara rinci disebut...",
+answers:[
+"Deskripsi",
+"Argumentasi",
+"Persuasi",
+"Prosedur"
+],
+correct:0
+},
+
+{
+question:"'Dan', 'atau', dan 'tetapi' termasuk...",
+answers:[
+"Kata benda",
+"Kata kerja",
+"Kata penghubung",
+"Kata sifat"
+],
+correct:2
+}
+
+],
+
+
+/* =====================================
+   BAHASA INGGRIS
+===================================== */
+
+inggris: [
+
+{
+question:"What is the meaning of 'book'?",
+answers:[
+"Buku",
+"Meja",
+"Kursi",
+"Pensil"
+],
+correct:0
+},
+
+{
+question:"'Good morning' means...",
+answers:[
+"Selamat malam",
+"Selamat pagi",
+"Selamat sore",
+"Sampai jumpa"
+],
+correct:1
+},
+
+{
+question:"What is the opposite of 'big'?",
+answers:[
+"Small",
+"Long",
+"Tall",
+"Fast"
+],
+correct:0
+},
+
+{
+question:"She ___ a student.",
+answers:[
+"am",
+"is",
+"are",
+"be"
+],
+correct:1
+},
+
+{
+question:"They ___ playing football.",
+answers:[
+"is",
+"am",
+"are",
+"be"
+],
+correct:2
+},
+
+{
+question:"I ___ a student.",
+answers:[
+"is",
+"are",
+"am",
+"be"
+],
+correct:2
+},
+
+{
+question:"What is the plural form of 'child'?",
+answers:[
+"Childs",
+"Children",
+"Childes",
+"Child"
+],
+correct:1
+},
+
+{
+question:"What is the past tense of 'go'?",
+answers:[
+"Goed",
+"Goes",
+"Went",
+"Going"
+],
+correct:2
+},
+
+{
+question:"What is the meaning of 'beautiful'?",
+answers:[
+"Jelek",
+"Indah",
+"Marah",
+"Sedih"
+],
+correct:1
+},
+
+{
+question:"He ___ football every Sunday.",
+answers:[
+"play",
+"plays",
+"playing",
+"played"
+],
+correct:1
+},
+
+{
+question:"What is the opposite of 'hot'?",
+answers:[
+"Warm",
+"Cold",
+"Big",
+"Dry"
+],
+correct:1
+},
+
+{
+question:"'Thank you' means...",
+answers:[
+"Terima kasih",
+"Selamat tinggal",
+"Maaf",
+"Permisi"
+],
+correct:0
+},
+
+{
+question:"What is the English word for 'rumah'?",
+answers:[
+"House",
+"School",
+"Garden",
+"Room"
+],
+correct:0
+},
+
+{
+question:"What is the English word for 'kucing'?",
+answers:[
+"Dog",
+"Bird",
+"Cat",
+"Fish"
+],
+correct:2
+},
+
+{
+question:"We use our eyes to...",
+answers:[
+"Eat",
+"See",
+"Walk",
+"Sleep"
+],
+correct:1
+},
+
+{
+question:"The sun rises in the...",
+answers:[
+"West",
+"North",
+"South",
+"East"
+],
+correct:3
+},
+
+{
+question:"What is the past tense of 'eat'?",
+answers:[
+"Eated",
+"Ate",
+"Eating",
+"Eats"
+],
+correct:1
+},
+
+{
+question:"My mother is a teacher. ___ teaches English.",
+answers:[
+"He",
+"She",
+"It",
+"They"
+],
+correct:1
+},
+
+{
+question:"What is the meaning of 'school'?",
+answers:[
+"Rumah",
+"Sekolah",
+"Pasar",
+"Rumah sakit"
+],
+correct:1
+},
+
+{
+question:"Which one is a color?",
+answers:[
+"Apple",
+"Blue",
+"Table",
+"Run"
+],
+correct:1
+}
+
+]
+
+};
+
+
+/* =====================================
+   VARIABLES
+===================================== */
+
+let currentQuestions = [];
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let timeLeft = 30;
+
+let timerInterval;
+
+let answered = false;
+
+
+/* =====================================
+   TAMPILKAN START
+===================================== */
+
+function showStart() {
+
+    document.getElementById(
+        "welcomeScreen"
+    ).style.display = "none";
+
+    document.getElementById(
+        "startScreen"
+    ).style.display = "block";
+
+}
+
+
+/* =====================================
+   MULAI KUIS
+===================================== */
+
+function startQuiz() {
+
+    const subject =
+        document.getElementById(
+            "subject"
+        ).value;
+
+
+    currentQuestions =
+        [...questions[subject]];
+
+
+    // Acak soal
+
+    currentQuestions.sort(
+        () => Math.random() - 0.5
+    );
+
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "startScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "quizScreen"
+    ).style.display = "block";
+
+
+    showQuestion();
+
+}
+
+
+/* =====================================
+   TAMPILKAN SOAL
+===================================== */
+
+function showQuestion() {
+
+    answered = false;
+
+
+    const questionData =
+        currentQuestions[
+            currentQuestion
+        ];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `Soal ${currentQuestion + 1}/${currentQuestions.length}`;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        questionData.question;
+
+
+    const answersContainer =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answersContainer.innerHTML = "";
+
+
+    questionData.answers.forEach(
+        (answer,index) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.classList.add(
+                "answer"
+            );
+
+
+            button.textContent =
+                `${String.fromCharCode(65 + index)}. ${answer}`;
+
+
+            button.onclick =
+                () =>
+                selectAnswer(
+                    index,
+                    button
+                );
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display = "none";
+
+
+    updateProgress();
+
+    startTimer();
+
+}
+
+
+/* =====================================
+   PILIH JAWABAN
+===================================== */
+
+function selectAnswer(
+    index,
+    selectedButton
+) {
+
+    if(answered) return;
+
+
+    answered = true;
+
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    const correctIndex =
+        currentQuestions[
+            currentQuestion
+        ].correct;
+
+
+    const allAnswers =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    allAnswers.forEach(
+        (button,i) => {
+
+            button.disabled = true;
+
+
+            if(i === correctIndex) {
+
+                button.classList.add(
+                    "correct"
+                );
+
+            }
+
+        }
+    );
+
+
+    if(index === correctIndex) {
+
+        score++;
+
+    }
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display = "block";
+
+}
+
+
+/* =====================================
+   SOAL BERIKUTNYA
+===================================== */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if(
+        currentQuestion <
+        currentQuestions.length
+    ) {
+
+        showQuestion();
+
+    }
+
+    else {
+
+        showResult();
+
+    }
+
+}
+
+
+/* =====================================
+   TIMER
+===================================== */
+
+function startTimer() {
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    timeLeft = 30;
+
+
+    document.getElementById(
+        "timer"
+    ).textContent =
+        `⏱️ ${timeLeft}`;
+
+
+    timerInterval =
+        setInterval(
+            () => {
+
+                timeLeft--;
+
+
+                document.getElementById(
+                    "timer"
+                ).textContent =
+                    `⏱️ ${timeLeft}`;
+
+
+                if(
+                    timeLeft <= 0
+                ) {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+
+                    if(!answered) {
+
+                        answered = true;
+
+
+                        const correctIndex =
+                            currentQuestions[
+                                currentQuestion
+                            ].correct;
+
+
+                        const allAnswers =
+                            document.querySelectorAll(
+                                ".answer"
+                            );
+
+
+                        allAnswers.forEach(
+                            (button,i) => {
+
+                                button.disabled =
+                                    true;
+
+
+                                if(
+                                    i ===
+                                    correctIndex
+                                ) {
+
+                                    button.classList.add(
+                                        "correct"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+
+                        document.getElementById(
+                            "nextBtn"
+                        ).style.display =
+                            "block";
+
+                    }
+
+                }
+
+            },
+            1000
+        );
+
+}
+
+
+/* =====================================
+   PROGRESS
+===================================== */
+
+function updateProgress() {
+
+    const progress =
+        (
+            (currentQuestion + 1) /
+            currentQuestions.length
+        ) * 100;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${progress}%`;
+
+}
+
+
+/* =====================================
+   HASIL
+===================================== */
+
+function showResult() {
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    document.getElementById(
+        "quizScreen"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "resultScreen"
+    ).style.display =
+        "block";
+
+
+    const finalScore =
+        Math.round(
+            (
+                score /
+                currentQuestions.length
+            ) * 100
+        );
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        finalScore;
+
+
+    document.getElementById(
+        "resultInfo"
+    ).innerHTML = `
+
+        Kamu menjawab
+        <b>${score}</b>
+        dari
+        <b>${currentQuestions.length}</b>
+        soal dengan benar.
+
+        <br><br>
+
+        ${getMessage(finalScore)}
+
+    `;
+
+}
+
+
+/* =====================================
+   PESAN NILAI
+===================================== */
+
+function getMessage(score) {
+
+    if(score === 100) {
+
+        return "🏆 SEMPURNA! Kamu luar biasa!";
+
+    }
+
+
+    if(score >= 90) {
+
+        return "🔥 Sangat bagus! Pertahankan!";
+
+    }
+
+
+    if(score >= 80) {
+
+        return "👏 Bagus sekali! Tingkatkan lagi!";
+
+    }
+
+
+    if(score >= 70) {
+
+        return "👍 Lumayan bagus! Tetap semangat belajar!";
+
+    }
+
+
+    if(score >= 60) {
+
+        return "💪 Sudah cukup! Jangan berhenti belajar!";
+
+    }
+
+
+    return "📚 Tidak apa-apa. Belajar lagi dan coba kembali!";
+
+}
+
+
+/* =====================================
+   MAIN LAGI
+===================================== */
+
+function restartQuiz() {
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    document.getElementById(
+        "resultScreen"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "welcomeScreen"
+    ).style.display =
+        "block";
+
+}
+
+</script>
+
+</body>
+</html>
